@@ -1,0 +1,27 @@
+<div class="displayTable">
+  <div class="displayTableCell">
+
+    <div class="authBlock">
+      <h3>Registrarse</h3>
+
+      <div class="formGroup">
+        <input type="email" class="formControl" placeholder="Correo electrónico" #userEmail required>
+      </div>
+
+      <div class="formGroup">
+        <input type="password" class="formControl" placeholder="Contraseña" #userPwd required>
+      </div>
+
+      <div class="formGroup text-center">
+        <button mat-flat-button color="accent"
+        (click)="authService.SignUp(userEmail.value, userPwd.value)">Registrarse</button>
+      </div>
+      
+    </div>
+
+    <div class="redirectToLogin">
+      <span>¿Ya tienes una cuenta?<span class="redirect" routerLink="/sign-in">Inicia sesión</span></span>
+    </div>
+  </div>
+
+</div>
