@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../shared/services/auth.service";
+import { DataService } from "../../shared/services/data.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +11,8 @@ import { AuthService } from "../../shared/services/auth.service";
 export class SignInComponent implements OnInit {
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    public dataService: DataService
   ) { }
 
   ngOnInit() { }

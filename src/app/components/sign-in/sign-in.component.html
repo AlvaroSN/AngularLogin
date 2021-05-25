@@ -13,7 +13,7 @@
   
         <div class="formGroup text-center">
           <button mat-flat-button color="accent"
-          (click)="authService.SignIn(userName.value, userPassword.value)">Iniciar sesión</button>
+          (click)="authService.SignIn(userName.value, userPassword.value); dataService.update()">Iniciar sesión</button>
         </div>
   
         <div class="forgotPassword">
