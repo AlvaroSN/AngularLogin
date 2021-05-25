@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from "../../shared/services/auth.service";
-import { DataService } from "../../shared/services/data.service"
+import { DataService } from "../../shared/services/data.service";
 import { Router } from "@angular/router";
 import { User } from 'src/app/shared/services/user';
 import { MatDialog } from '@angular/material/dialog';
@@ -19,7 +19,7 @@ userName: String = this.user.email;
 
   constructor(
     public authService: AuthService,
-    private dataService: DataService,
+    public dataService: DataService,
     private dialog: MatDialog,
     public router: Router,
     public ngZone: NgZone
@@ -32,7 +32,7 @@ userName: String = this.user.email;
   openDialog(user: User){
       const dialogRef = this.dialog.open(ChangeNameComponent, {
         width: '500px',
-        data: {email: user.email}
+        data: {name: this.userName}
       });
   }
 

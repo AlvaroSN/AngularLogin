@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './shared/routing/app-routing.module';
 
@@ -25,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { ChangeNameComponent } from './components/change-name/change-name.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -47,7 +48,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MatGridListModule,
+    FormsModule
   ],
   providers: [AuthService, DataService],
   bootstrap: [AppComponent],

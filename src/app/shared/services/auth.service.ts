@@ -1,9 +1,10 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from "../services/user";
-import { auth } from 'firebase/app';
+import { Router } from "@angular/router";
+
+import "firebase/auth";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Router } from "@angular/router";
 
 
 @Injectable({
@@ -33,7 +34,7 @@ export class AuthService {
   }
 
   SignIn(email, password) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
@@ -45,7 +46,7 @@ export class AuthService {
   }
 
   SignUp(email, password) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+    return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
         this.SendVerificationMail();
         this.SetUserData(result.user);
@@ -54,15 +55,15 @@ export class AuthService {
       })
   }
 
-  SendVerificationMail() {
-    return this.afAuth.auth.currentUser.sendEmailVerification()
+  async SendVerificationMail() {
+    return (await this.afAuth.currentUser).sendEmailVerification()
     .then(() => {
       this.router.navigate(['verify-email-address']);
     })
   }
 
   ForgotPassword(passwordResetEmail) {
-    return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
+    return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {
       window.alert('Le hemos enviado un correo para restaurar su contraseña');
     }).catch((error) => {
@@ -76,7 +77,7 @@ export class AuthService {
   }
 
   AuthLogin(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
+    return this.afAuth.signInWithPopup(provider)
     .then((result) => {
        this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
@@ -87,9 +88,9 @@ export class AuthService {
     })
   }
 
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider());
-  }
+  // GoogleAuth() {
+  //   return this.AuthLogin(new auth.GoogleAuthProvider());
+  // }
 
   SetUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
@@ -106,7 +107,7 @@ export class AuthService {
   }
 
   SignOut() {
-    return this.afAuth.auth.signOut().then(() => {
+    return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['sign-in']);
     })

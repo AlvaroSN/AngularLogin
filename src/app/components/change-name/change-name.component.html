@@ -1,5 +1,16 @@
-<h2>Cambio de nombre</h2>
 
-<div mat-dialog-actions class="row d-flex justify-content-center">
-  <button mat-flat-button mat-dialog-close color="warn">Cancelar</button>
+<div class="text-center">
+  <h2 class="mb-3">Cambio de nombre</h2>
+
+  <div mat-dialog-content>
+    <h3>{{ originalName }}</h3>
+    <!-- <textarea rows="1" (input) = "changeName($event.target.value)" [(ngModel)] = "name" 
+    > {{originalName}} </textarea> -->
+    <input type="text" value="{{originalName}}" (input) = "changeName($event.target.value)" 
+    [(ngModel)] = "name">
+  </div>
+
+  <div mat-dialog-actions class="justify-content-center">
+    <button mat-flat-button mat-dialog-close color="warn">Cerrar</button>
+  </div>
 </div>
