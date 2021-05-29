@@ -3,18 +3,17 @@ Despliegue: https://alvarosn.github.io/AngularLogin/sign-in
 
 ## Versiones
 ```
-Angular CLI: 11.2.6
-Angular CDK: 11.2.9
-Angular material: 11.2.9
-AngularFire: 6.1.4
-Firebase: 9.11.0
+Angular CLI: 11.2.13
+Angular CDK: 11.2.12
+Angular material: 11.2.12
+AngularFire: 6.1.5
 ```
 
 
 ## Base de datos y servicios
 Para la base de datos he usado la plataforma online de Google Firebase, más concretamente con su apartado para la autentificación de usuarios; interactuando con este a través de un servicio de Angular (**AuthService**). En este servicio nos podemos encontrar con varios métodos para trabajar con la autenticación de Firebase: iniciar sesión, regitsrase, enviar un correo de verificación al registrarse, restaurar la contraseña a través de un correo, comprobar si el usuario en cuestión está logueado, actualizar los datos de un usuario cuando sea necesario y cerrar sesión.
 
-También desarrollé otro servicio (**DataService**) para implemetar la comunicación entre componentes, con el que a través de [ChangeNameComponent](https://github.com/AlvaroSN/AngularLogin/tree/main/src/app/components/change-name) se puede editar el nombre que aprece en el [DashBoardComponent](https://github.com/AlvaroSN/AngularLogin/tree/main/src/app/components/dashboard)
+También desarrollé otro servicio (**DataService**), para implemetar la comunicación entre componentes, con el que a través de [ChangeNameComponent](https://github.com/AlvaroSN/AngularLogin/tree/main/src/app/components/change-name) se puede editar el nombre que aprece en el [DashBoardComponent](https://github.com/AlvaroSN/AngularLogin/tree/main/src/app/components/dashboard)
 
 
 ## Componentes
