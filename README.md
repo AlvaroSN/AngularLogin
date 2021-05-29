@@ -1,27 +1,32 @@
-# AngularLogin
+# Log in
+Despliegue: https://alvarosn.github.io/AngularLogin/sign-in
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
+## Versiones
+```
+Angular CLI: 11.2.6
+Angular CDK: 11.2.9
+Angular material: 11.2.9
+AngularFire: 6.1.4
+Firebase: 9.11.0
+```
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Base de datos y servicios
+Para la base de datos he usado la plataforma online de Google Firebase, más concretamente con su apartado para la autentificación de usuarios; interactuando con este a través de un servicio de Angular (**AuthService**). En este servicio nos podemos encontrar con varios métodos para trabajar con la autenticación de Firebase: iniciar sesión, regitsrase, enviar un correo de verificación al registrarse, restaurar la contraseña a través de un correo, comprobar si el usuario en cuestión está logueado, actualizar los datos de un usuario cuando sea necesario y cerrar sesión.
 
-## Code scaffolding
+También desarrollé otro servicio (**DataService**) para implemetar la comunicación entre componentes, con el que a través de [ChangeNameComponent](https://github.com/AlvaroSN/AngularLogin/tree/main/src/app/components/change-name) se puede editar el nombre que aprece en el [DashBoardComponent](https://github.com/AlvaroSN/AngularLogin/tree/main/src/app/components/dashboard)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Componentes
+La aplicación web cuenta con 6 componentes disintos:
+* change-name: diálogo para cambiar el nombre mostrado en el component dashboard a través de la implementación mostrada en este [vídeo](https://www.youtube.com/watch?v=w5cCsoOs8SI&t=1s)   
+* dashboard: componente principal mostrado al iniciar sesión, donde nos encontramos dos partes: menú implementado con [Angular Routing](https://github.com/AlvaroSN/AngularLogin/tree/main/src/app/shared/routing) y apartado donde se muestran los datos del usuario logueado
+* forgot-password: componente para recuperar la contraseña de una cuenta, que realiza mediante un correo que se envía al perfil indicado, y este incluye un enlace que te permite cambiar la contraseña de la cuenta en cuestión 
+* sign-in: primer componente en mostrarse, para iniciar sesión
+* sign-up: componente para registrarse con un correo que aún no esté en la base de datos
+* verify-email: componente que nos indica que se ha enviado el correo de verificación 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Indicaciones de uso
+* Al iniciar sesión hay que pulsar **dos veces** en el botón de iniciar sesión
+* Para poder iniciar sesión correctamente, despúes de haberse registrado, hay que tener en cuenta dos aspectos: hay que **verificar el correo** mediante el enlace que se manda para poder iniciar sesión y después se recomienda **recargar** la página 
+* El nombre de usuario, que se puede cambiar con el [ChangeNameComponent](https://github.com/AlvaroSN/AngularLogin/tree/main/src/app/components/change-name), por defecto es la primera parte del correo (antes de la @) y es el que sale en **negrita** al lado de "Bienvenido: "
